@@ -6,11 +6,10 @@ const img = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fus.123rf.com%2F4
 
 const getdriver = async (req, res) =>{
     try {
-        const drivers = await axios(URL);
-        const driversData = drivers.data
-        console.log(drivers.data);
-
-        driversData.forEach(conductor => {
+        const allDrivers = await axios(URL);
+        
+        
+        allDrivers.data.forEach(conductor => {
           if (!conductor.image || !conductor.image.url) {
             // Si el conductor no tiene una imagen, asigna una por defecto
             conductor.image = {
@@ -19,11 +18,11 @@ const getdriver = async (req, res) =>{
           }
         });
 
-        res.status(200).json(driversData)
+        res.status(200).json(allDrivers.data)
   
 
     } catch (error) {
-      return res.status(500).json({error: error.message}) 
+      return res.status(500).send("No existen drivers") 
         
     }
 }

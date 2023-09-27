@@ -38,3 +38,36 @@ const getTeams = async(req, res) =>{
 module.exports={
     getTeams,
 }
+
+
+// const getTeams= async(req, res) =>{
+//     try {
+//          const {teams} = req.body
+         
+//         // Me fijo si la base de datos está vacía
+//        const teamsEnDB = await Teams.findAll();
+
+//        //si tiene algo me lo devuelve 
+//        if (teamsEnDB !== undefined && teamsEnDB !== null) {
+//                 return res.status(200).json(teamsEnDB)
+//             }
+//         // SI MI BASE DE DATOS ESTA VACIA ME TENGO QUE TRARER A LOS TEAMS DE MI API 
+//         const response = await axios(`${URL}/${teams}`); 
+//         // Supongamos que la respuesta es un arreglo de objetos que contienen información de equipos
+//        const data = response.data;
+
+//       // Filtra los equipos de los datos obtenidos
+//         teams = data.map(driver => driver.teams);
+
+
+//     } catch (error) {
+//         console.log(error.message);
+//       return res.status(500).json({error: error.message})   
+//     }
+// }
+
+
+
+
+
+

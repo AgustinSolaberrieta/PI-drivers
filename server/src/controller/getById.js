@@ -20,15 +20,10 @@ const getdriverdById = async (req,res) =>{
          res.status(200).json(dbid)
         }
 
-       
         // si no esta en mi bd lo busco en mi api
         const { data }= await axios.get(`${URL}/${id}`);
         res.status(200).json(data)
-    
-       
-         
-    
-    
+  
     } catch (error) {
       console.log(error.message);
         return res.status(500).json({error: error.message}) 
@@ -36,4 +31,4 @@ const getdriverdById = async (req,res) =>{
 
 }
 
-module.exports={getdriverdById,}
+module.exports={getdriverdById}
