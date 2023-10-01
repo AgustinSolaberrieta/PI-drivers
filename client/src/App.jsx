@@ -19,16 +19,12 @@
 // }
 
 // export default App
-
-
-
-
 import LandingPage from './component/LandingPage/LandingPage'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import Cards from './component/Cards/Cards';
-import Detail from './component/Detail/Detail'
+ import Detail from './component/Detail/Detail'
 
 function App() {
   
@@ -39,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path='/home' element={<Cards/>}/>
-        <Route path='/diver/:id' element={<Detail/>}/>
+        <Route path='/detail/:id' element={<Detail/>}/>  
         {/* Agrega más rutas según sea necesario */}
       </Routes>
     </>

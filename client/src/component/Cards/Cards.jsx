@@ -6,7 +6,7 @@ import Card from "../Card/Card";
 const Cards = () => {
     const dispatch = useDispatch();
     const drivers = useSelector(state => state.drivers.data);
-    
+     console.log(drivers);
     useEffect(() => {
         dispatch(getDrivers());
     }, []);
@@ -14,7 +14,7 @@ const Cards = () => {
     return (
         <div>
             <h1>Drivers</h1>
-            {drivers.map((driver) => {
+            {/* {drivers.map((driver) => {
                 return(
                 <Card
                     key={driver.id}
@@ -24,7 +24,21 @@ const Cards = () => {
                     teams={driver.teams}
                 />
                 )}
-            )}
+            )} */}
+             {drivers ? (
+            drivers.map((driver) => (
+                <Card
+                    key={driver.id}
+                    id={driver.id}
+                    name={driver.name}
+                    surname={driver.surname}
+                    image={driver.image}
+                    teams={driver.teams}
+                />
+            ))
+        ) : (
+            <p>Cargando conductores...</p>
+        )}
         </div>
     );
 };

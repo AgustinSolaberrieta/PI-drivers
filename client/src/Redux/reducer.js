@@ -1,4 +1,4 @@
-import { GET_DRIVERS, GET_DRIVERS_DETAIL } from "./action-types";
+import { GET_DRIVERS,GET_DRIVERS_DETAIL } from "./action-types";
 
 const initialState={
     drivers: [],
