@@ -1,5 +1,5 @@
 
-import { GET_DRIVERS , GET_DRIVERS_DETAIL} from "./action-types";
+import { GET_DRIVERS , GET_DRIVERS_DETAIL, CLEAN_DETAIL} from "./action-types";
 import axios from "axios";
 const endpoint = 'http://localhost:3001'
 
@@ -19,15 +19,23 @@ export const getDrivers = () => {
 
 
 export const getDriversDetail = (id) => {
-    return async function (dispach){
+    return async function (dispatch){
        const buscoporId= await axios.get(`${endpoint}/drivers/${id}`)
+     console.log(buscoporId.data);
        if(!buscoporId){
         throw Error("Salio mal")
        }
-       return dispach({
+       return dispatch({
         type: GET_DRIVERS_DETAIL , 
-        payload: buscoporId
+        payload: buscoporId.data,
+        
       })
+      
     }
 
+}
+
+
+export const cleanDetail= () => {
+  return {type: CLEAN_DETAIL}
 }
