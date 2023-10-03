@@ -26,27 +26,21 @@ import './App.css'
 import Cards from './component/Cards/Cards';
  import Detail from './component/Detail/Detail'
  import Nav from './component/Nav/Nav';
-//import SearchBar from './component/SearchBar/SearchBar';
 
 function App() {
     
      const location = useLocation()
-     
-    
 
   return (
-    
-    <>
-
-<div>
+    <> 
+      <div>
         {location.pathname === "/home" && <Nav />}
       </div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path='/home' element={<Cards/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>  
-        {/* Agrega más rutas según sea necesario */}
-        {/* <Route path="/home" element={<SearchBar />} /> */}
+    
       </Routes>
       
     </>

@@ -1,4 +1,4 @@
-import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR, SET_CURRENT_PAGE } from "./action-types";
+import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR, SET_CURRENT_PAGE, ORDERCARDS_NAME_ASC, ORDERCARDS_NAME_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC } from "./action-types";
 
 const initialState={
     drivers: [],
@@ -39,6 +39,60 @@ const reducer = (state = initialState , action) => {
                 ...state,
                 searchBar: action.payload
             }
+
+        case ORDERCARDS_NAME_ASC:
+            const sortedByNameAsc = [...state.drivers.data].sort((a, b)=>{
+                return a.name.localeCompare(b.name)
+            }); 
+            return {
+                ...state,
+                drivers: {
+                  ...state.drivers,
+                  data: sortedByNameAsc
+                }
+              };
+        case ORDERCARDS_NAME_DESC:
+            const sortedByNameDesc = [...state.drivers.data].sort((a, b)=>{
+                return b.name.localeCompare(a.name)
+            }); 
+            return {
+                ...state,
+                drivers: {
+                  ...state.drivers,
+                  data: sortedByNameDesc
+                }
+              };
+        case ORDERCARD_DOB_ASC:
+            const sortedByDOBAsc = [...state.drivers.data].sort((a, b) => {
+                const dateA = new Date(a.dob); // Supongamos que la fecha de nacimiento está en formato 'YYYY-MM-DD'
+                const dateB = new Date(b.dob);
+                return dateA - dateB;
+              });
+              return {
+                ...state,
+                drivers: {
+                  ...state.drivers,
+                  data: sortedByDOBAsc
+                }};
+
+        case ORDERCARD_DOB_DESC:
+            const sortedByDOBDesc = [...state.drivers.data].sort((a, b) => {
+                const dateA = new Date(a.dob); // Supongamos que la fecha de nacimiento está en formato 'YYYY-MM-DD'
+                const dateB = new Date(b.dob);
+                return  dateB - dateA;
+              });
+              return {
+                ...state,
+                drivers: {
+                  ...state.drivers,
+                  data: sortedByDOBDesc
+                }};        
+
+
+
+
+
+
         
             
        

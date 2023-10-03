@@ -1,7 +1,6 @@
 
-// Nav.js
 import React from "react";
-import SearchBar from "../SearchBar/SearchBar"; // Importa el componente SearchBar
+import SearchBar from "../SearchBar/SearchBar"; 
 import { useSelector } from "react-redux/es/hooks/useSelector";
 const Nav = () => {
   const searchBarData = useSelector((state) => state.searchBar);
@@ -9,7 +8,6 @@ const Nav = () => {
     <nav>
       <h1>Tu Aplicación</h1>
       <div className="searchResults">
-        {/* Utiliza searchBarData para mostrar los resultados o un mensaje de carga */}
         {searchBarData ? (
           searchBarData.map((driver) => (
             <div key={driver.id} className="driverCard">
@@ -23,7 +21,7 @@ const Nav = () => {
           <p>Cargando resultados...</p>
         )}
       </div>
-      <SearchBar /> {/* Agrega el componente SearchBar aquí */}
+      <SearchBar /> 
     </nav>
   );
 };

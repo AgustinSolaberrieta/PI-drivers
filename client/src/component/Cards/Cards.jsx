@@ -1,40 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getDrivers } from "../../Redux/action";
+import { getDrivers, orderDriversByDOBAsc, orderDriversByNameDesc, orderDriversByNameAsc, orderDriversByDOBDesc  } from "../../Redux/action";
 import Card from "../Card/Card";
-
-// const Cards = () => {
-//     const dispatch = useDispatch();
-//     const drivers = useSelector(state => state.drivers.data);
-
-//     useEffect(() => {
-//         dispatch(getDrivers());
-//     }, []);
-
-//     return (
-//         <div>
-//             <h1>Drivers</h1>
-//              {drivers ? (
-//             drivers.map((driver) => (
-//                 <Card
-//                     key={driver.id}
-//                     id={driver.id}
-//                     name={driver.name}
-//                     surname={driver.surname}
-//                     image={driver.image}
-//                     teams={driver.teams}
-//                 />
-//             ))
-//         ) : (
-//             <p>Cargando conductores...</p>
-//         )}
-//         </div>
-//     );
-// };
-
-// export default Cards;
-
-
 
 
 const Cards = () => {
@@ -48,6 +15,8 @@ const Cards = () => {
       dispatch(getDrivers());
     }, []);
   
+
+    //Paginado
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const driversToShow = drivers ? drivers.slice(startIndex, endIndex) : [];
@@ -63,9 +32,31 @@ const Cards = () => {
     const pageRangeStart = Math.max(currentPage - 1, 1);
     const pageRangeEnd = Math.min(currentPage + visiblePages - 2, totalPages);
   
+    const handleOrderByNameAsc = () => {
+      dispatch(orderDriversByNameAsc())
+    }
+    const handleOrderByNameDesc = () => {
+      dispatch(orderDriversByNameDesc())
+    }
+    const handleOrderByDOBAsc = () => {
+      dispatch(orderDriversByDOBAsc());
+    };
+    const handleOrderByDOBDesc = () => {
+      dispatch(orderDriversByDOBDesc());
+    };
+    console.log(handleOrderByNameAsc.data);
+
+    
     return (
       <div>
         <h1>Drivers</h1>
+         <div> <button onClick={handleOrderByNameAsc}>Ordenar por Nombre Ascendente</button>
+         <button onClick={handleOrderByNameDesc}>Ordenar por Nombre Descendente </button>
+         <button onClick={handleOrderByDOBAsc}>Ordenar por Fecha de Nacimiento Ascendente</button>
+         <button onClick={handleOrderByDOBDesc}>Ordenar por Fecha de Nacimiento Descendente</button>
+
+        </div>
+
         {drivers ? (
           driversToShow.map((driver) => (
             <Card

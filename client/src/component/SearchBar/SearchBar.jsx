@@ -21,7 +21,7 @@ const SearchBar = () => {
       {/* Agrega el campo de entrada y conecta la función handleChange */}
       <input
         type="text"
-        placeholder="Buscar conductores por nombre..."
+        placeholder="Buscar drivers por nombre..."
         value={name}
         onChange={handleChange} // Conecta la función handleChange al campo de entrada
       />
