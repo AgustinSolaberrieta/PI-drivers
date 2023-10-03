@@ -1,8 +1,12 @@
-import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL } from "./action-types";
+import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR, SET_CURRENT_PAGE } from "./action-types";
 
 const initialState={
     drivers: [],
-    driversDetail : {}
+    currentPage: 1,
+    currentPerPage: 9,
+    driversDetail : {},
+    searchBar: []
+    
 }
 
 const reducer = (state = initialState , action) => {
@@ -12,7 +16,13 @@ const reducer = (state = initialState , action) => {
                 ...state,
                 drivers: action.payload
             }   
+         case SET_CURRENT_PAGE:
             
+            return {
+                ...state,
+                currentPage: action.payload
+            }    
+
         case GET_DRIVERS_DETAIL:
             return{
                 ...state,
@@ -24,6 +34,14 @@ const reducer = (state = initialState , action) => {
            driversDetail: {}
 
         }
+        case SEARCHBAR:
+            return{
+                ...state,
+                searchBar: action.payload
+            }
+        
+            
+       
         default:
             return {...state}
     }

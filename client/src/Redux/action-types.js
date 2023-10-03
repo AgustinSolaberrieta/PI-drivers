@@ -1,3 +1,5 @@
 export const GET_DRIVERS = "GET_DRIVERS"
 export const GET_DRIVERS_DETAIL = "GET_DRIVERS_DETAIL"
 export const CLEAN_DETAIL = "CLEAN_DETAIL"
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
+export const SEARCHBAR = "SEARCHBAR"
