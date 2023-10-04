@@ -11,22 +11,22 @@ const SearchBar = () => {
     setName(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const onSearch = () => {
+    
     dispatch(searchBar(name)); // Llama a la acción searchBar con el término de búsqueda
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       {/* Agrega el campo de entrada y conecta la función handleChange */}
       <input
-        type="text"
+        type="search"
         placeholder="Buscar drivers por nombre..."
         value={name}
         onChange={handleChange} // Conecta la función handleChange al campo de entrada
       />
-      <button type="submit">Buscar</button>
-    </form>
+      <button type="submit" onClick={()=>{onSearch()}}>Buscar</button>
+    </div>
   );
 };
 

@@ -1,11 +1,11 @@
-import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR, SET_CURRENT_PAGE, ORDERCARDS_NAME_ASC, ORDERCARDS_NAME_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC } from "./action-types";
+import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR} from "./action-types";
 
 const initialState={
     drivers: [],
-    currentPage: 1,
-    currentPerPage: 9,
+    // currentPage: 1,
+    // currentPerPage: 9,
     driversDetail : {},
-    searchBar: []
+    
     
 }
 
@@ -16,12 +16,12 @@ const reducer = (state = initialState , action) => {
                 ...state,
                 drivers: action.payload
             }   
-         case SET_CURRENT_PAGE:
+        //  case SET_CURRENT_PAGE:
             
-            return {
-                ...state,
-                currentPage: action.payload
-            }    
+        //     return {
+        //         ...state,
+        //         currentPage: action.payload
+        //     }    
 
         case GET_DRIVERS_DETAIL:
             return{
@@ -37,56 +37,59 @@ const reducer = (state = initialState , action) => {
         case SEARCHBAR:
             return{
                 ...state,
-                searchBar: action.payload
+                drivers: action.payload
             }
 
-        case ORDERCARDS_NAME_ASC:
-            const sortedByNameAsc = [...state.drivers.data].sort((a, b)=>{
-                return a.name.localeCompare(b.name)
-            }); 
-            return {
-                ...state,
-                drivers: {
-                  ...state.drivers,
-                  data: sortedByNameAsc
-                }
-              };
-        case ORDERCARDS_NAME_DESC:
-            const sortedByNameDesc = [...state.drivers.data].sort((a, b)=>{
-                return b.name.localeCompare(a.name)
-            }); 
-            return {
-                ...state,
-                drivers: {
-                  ...state.drivers,
-                  data: sortedByNameDesc
-                }
-              };
-        case ORDERCARD_DOB_ASC:
-            const sortedByDOBAsc = [...state.drivers.data].sort((a, b) => {
-                const dateA = new Date(a.dob); // Supongamos que la fecha de nacimiento está en formato 'YYYY-MM-DD'
-                const dateB = new Date(b.dob);
-                return dateA - dateB;
-              });
-              return {
-                ...state,
-                drivers: {
-                  ...state.drivers,
-                  data: sortedByDOBAsc
-                }};
+        // case ORDERCARDS_NAME_ASC:
+        //     const sortedByNameAsc = [...state.drivers.data].sort((a, b)=>{
+        //         return a.name.localeCompare(b.name)
+        //     }); 
+        //     return {
+        //         ...state,
+        //         drivers: {
+        //           ...state.drivers,
+        //           data: sortedByNameAsc
+        //         }
+        //       };
+        // case ORDERCARDS_NAME_DESC:
+        //     const sortedByNameDesc = [...state.drivers.data].sort((a, b)=>{
+        //         return b.name.localeCompare(a.name)
+        //     }); 
+        //     return {
+        //         ...state,
+        //         drivers: {
+        //           ...state.drivers,
+        //           data: sortedByNameDesc
+        //         }
+        //       };
+        // case ORDERCARD_DOB_ASC:
+        //     const sortedByDOBAsc = [...state.drivers.data].sort((a, b) => {
+        //         const dateA = new Date(a.dob); // Supongamos que la fecha de nacimiento está en formato 'YYYY-MM-DD'
+        //         const dateB = new Date(b.dob);
+        //         return dateA - dateB;
+        //       });
+        //       return {
+        //         ...state,
+        //         drivers: {
+        //           ...state.drivers,
+        //           data: sortedByDOBAsc
+        //         }};
 
-        case ORDERCARD_DOB_DESC:
-            const sortedByDOBDesc = [...state.drivers.data].sort((a, b) => {
-                const dateA = new Date(a.dob); // Supongamos que la fecha de nacimiento está en formato 'YYYY-MM-DD'
-                const dateB = new Date(b.dob);
-                return  dateB - dateA;
-              });
-              return {
-                ...state,
-                drivers: {
-                  ...state.drivers,
-                  data: sortedByDOBDesc
-                }};        
+        // case ORDERCARD_DOB_DESC:
+        //     const sortedByDOBDesc = [...state.drivers.data].sort((a, b) => {
+        //         const dateA = new Date(a.dob); // Supongamos que la fecha de nacimiento está en formato 'YYYY-MM-DD'
+        //         const dateB = new Date(b.dob);
+        //         return  dateB - dateA;
+        //       });
+        //       return {
+        //         ...state,
+        //         drivers: {
+        //           ...state.drivers,
+        //           data: sortedByDOBDesc
+        //         }};  
+            
+        //case FILTER_TEAM:
+
 
 
 
