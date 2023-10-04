@@ -4,7 +4,7 @@ const img = "https://previews.123rf.com/images/derocz/derocz1502/derocz150200005
 
 
 
-const getdriver = async (req, res) =>{
+const getdriver = async (_req, res) =>{
     try {
       const allDriversResponse = await axios.get(URL);
         const allDriversData = allDriversResponse.data;

@@ -50,9 +50,18 @@ const getDriversByName = async (req, res) => {
     // esto lo que hace es buscar dentro de la api la info 
     // va a buscar todos los nombres q arranquen con mayus q es 
     //se queda con los nombres q  contienen la cadena en mayus
-        const filterEd = resu.filter(driver =>{
+        const filterEd = resu
+        .filter(driver =>{
            return driver.name.forename.includes(mayus)
         })
+        .map((driver) => ({
+          id: driver.id,
+          name: driver.name.forename,
+          surname: driver.name.surname,
+          image: driver.image.url, // Asigna la imagen predeterminada si no hay una URL de imagen
+          teams: driver.teams,
+          dob: driver.dob
+        }));
     
     
     

@@ -33,8 +33,10 @@ const getTeams= async(req, res) =>{
         const newnewmapeo= newmapeo.flatMap(elemento => elemento.trim())
 
        const equiposUnicos= [...new Set(newnewmapeo)]
+    //await Teams.bulkCreate(equiposUnicos.map(name => ({ name })));
 
-      //  const gusrdoenbasededatos= await Teams.bulkCreate(equiposUnicos)
+
+       // const gusrdoenbasededatos= await Teams.bulkCreate(equiposUnicos)
      
       // console.log(gusrdoenbasededatos);
 
