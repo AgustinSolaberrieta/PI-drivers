@@ -11,13 +11,13 @@
 // [IMPORTANTE]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el nombre del driver no pueda contener símbolos,etc.
 
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const endpoint = 'http://localhost:3001'
 
 
 const Form =  () => {
-    
+    const navigate = useNavigate();
 
     const [driver, setDriver] = useState({  
             name: "",
@@ -37,7 +37,7 @@ const Form =  () => {
           const response = await axios.post(`${endpoint}/drivers`, driver);
           // Maneja la respuesta del servidor, por ejemplo, muestra un mensaje de éxito
           console.log("Conductor creado con éxito:", response.data);
-    
+          navigate(`/detail/${response.data.id}`);
           // Puedes hacer más acciones aquí, como redirigir a otra página
         } catch (error) {
           // Maneja los errores, por ejemplo, muestra un mensaje de error
