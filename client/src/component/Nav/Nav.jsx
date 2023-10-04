@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import Filter from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar"; 
 const Nav = () => {
@@ -9,6 +10,9 @@ const Nav = () => {
       
       <SearchBar /> 
       <Filter/>
+      <button className='Boton2'>
+          <Link to='/create'>Nuevo Driver</Link>
+        </button>
     </nav>
   );
 };

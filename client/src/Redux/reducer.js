@@ -1,9 +1,7 @@
-import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR, SET_ORDER_BY_ASC, SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC} from "./action-types";
+import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR, SET_ORDER_BY_ASC, SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC, CREATE_DRIVER} from "./action-types";
 
 const initialState={
     drivers: [],
-    // currentPage: 1,
-    // currentPerPage: 9,
     driversDetail : {},
     
     
@@ -15,13 +13,7 @@ const reducer = (state = initialState , action) => {
             return{
                 ...state,
                 drivers: action.payload
-            }   
-        //  case SET_CURRENT_PAGE:
-            
-        //     return {
-        //         ...state,
-        //         currentPage: action.payload
-        //     }    
+            }  
 
         case GET_DRIVERS_DETAIL:
             return{
@@ -39,6 +31,13 @@ const reducer = (state = initialState , action) => {
                 ...state,
                 drivers: action.payload
             }
+
+        case CREATE_DRIVER:
+          return{
+            ...state,
+            drivers: [...state.drivers, action.payload.data]
+
+          }    
 
             case SET_ORDER_BY_ASC:
                 const sortedByNameAsc = [...state.drivers.data].sort((a, b)=>{

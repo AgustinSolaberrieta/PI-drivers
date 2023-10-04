@@ -1,4 +1,4 @@
-import { GET_DRIVERS , GET_DRIVERS_DETAIL, CLEAN_DETAIL, SET_CURRENT_PAGE, SEARCHBAR, SET_ORDER_BY_ASC,SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC} from "./action-types";
+import { GET_DRIVERS , GET_DRIVERS_DETAIL, CLEAN_DETAIL, SET_CURRENT_PAGE, SEARCHBAR, SET_ORDER_BY_ASC,SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC, CREATE_DRIVER} from "./action-types";
 import axios from "axios";
 const endpoint = 'http://localhost:3001'
 
@@ -67,6 +67,22 @@ export const searchBar = (name) => {
     }
   };
  };
+
+ export const createDriver = (driver) => {
+  return async function(dispatch){
+    try{
+      console.log("llega");
+      const response = await axios.post(`${endpoint}/drivers`,{...driver})
+
+
+      return dispatch({type: CREATE_DRIVER, payload:response})
+
+    }catch (error){
+      console.log(error.message);
+
+    }
+  }
+ }
 
 export const  setOrderByAsc = () => ({
     type: SET_ORDER_BY_ASC,
