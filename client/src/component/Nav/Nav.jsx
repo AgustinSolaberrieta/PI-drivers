@@ -1,4 +1,5 @@
 
+import Filter from "../Filters/Filters";
 import SearchBar from "../SearchBar/SearchBar"; 
 const Nav = () => {
 
@@ -7,6 +8,7 @@ const Nav = () => {
       <h1>Tu Aplicación</h1>
       
       <SearchBar /> 
+      <Filter/>
     </nav>
   );
 };

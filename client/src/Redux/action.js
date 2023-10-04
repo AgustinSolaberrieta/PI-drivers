@@ -1,4 +1,4 @@
-import { GET_DRIVERS , GET_DRIVERS_DETAIL, CLEAN_DETAIL, SET_CURRENT_PAGE, SEARCHBAR} from "./action-types";
+import { GET_DRIVERS , GET_DRIVERS_DETAIL, CLEAN_DETAIL, SET_CURRENT_PAGE, SEARCHBAR, SET_ORDER_BY_ASC,SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC} from "./action-types";
 import axios from "axios";
 const endpoint = 'http://localhost:3001'
 
@@ -66,23 +66,25 @@ export const searchBar = (name) => {
       // Puedes manejar el error aquí si es necesario
     }
   };
-// };
+ };
 
-// export const orderDriversByNameAsc = () => ({
-//   type: ORDERCARDS_NAME_ASC
-// })
+export const  setOrderByAsc = () => ({
+    type: SET_ORDER_BY_ASC,
+  })
 
-// export const orderDriversByNameDesc = () => ({
-//   type: ORDERCARDS_NAME_DESC
-// })
+ export const  setOrderByDesc = () => ({
+    type: SET_ORDER_BY_DESC,
+  })
 
-// export const orderDriversByDOBAsc = () => {
-//   return { type: ORDERCARD_DOB_ASC};
-// };
 
-// export const  orderDriversByDOBDesc = () => {
-//   return { type: ORDERCARD_DOB_DESC};
-// };
+
+export const orderDriversByDOBAsc = () => {
+  return { type: ORDERCARD_DOB_ASC};
+};
+
+export const  orderDriversByDOBDesc = () => {
+  return { type: ORDERCARD_DOB_DESC};
+};
 
 // export const filterTeam = () => {
 //   return async function (dispatch){
@@ -95,8 +97,8 @@ export const searchBar = (name) => {
 //      type: FILTER_TEAM , 
 //      payload: buscoporTeams.data,
      
-//    })
+//    }
    
 //  }
 
- }
+ //}
