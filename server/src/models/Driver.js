@@ -32,10 +32,9 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     dob:{
-      type: DataTypes.DATEONLY, // Para almacenar solo la fecha de nacimiento sin la hora
-      allowNull: true,}
-
-
+      type: DataTypes.STRING, // Para almacenar solo la fecha de nacimiento sin la hora
+      allowNull: true,
+    }
   });
 };
 // ID (deben ser distintos a los que vienen de la API). *

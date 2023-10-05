@@ -33,20 +33,12 @@ const postDrivers = async (req, res) => {
       }
   
       // Ahora, crea las relaciones con los equipos
-      for (let teamName of teams) {
-        const [teamInstance] = await Teams.findOrCreate({
-          where: { name: teamName },
-        });
-  
-        // Verifica si teamInstance se creó con éxito
-        if (!teamInstance) {
-          res.status(400).send(`No se puede encontrar/crear el equipo: ${teamName}`);
-          return;
-        }
-  
-        // Crea la relación en la tabla Drivers_Teams
-        await newDriver.addTeams(teamInstance); // Utiliza el nombre 'Teams' que definiste en db.js
-      }
+      const selectedteams = await Teams.findAll({
+        where: { name: teams}
+      })
+      
+      // Crea la relación en la tabla Drivers_Teams
+      await newDriver.addTeams(selectedteams); // Utiliza el nombre 'Teams' que definiste en db.js
   
       res.status(200).json(newDriver);
     } catch (error) {

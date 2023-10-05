@@ -8,25 +8,21 @@ const getdriverdById = async (req,res) =>{
 
         const { id } = req.params;
         const UUID = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(
-        id
-      );
+        id);
 
+        let dbid
         if (UUID) {
-          const dbid = await Driver.findOne({
-          where: {id},
-          // si incluye los datos del eqipo dentro de Drivers(osea mi base de datos)
-          include: [{ model: Teams, as: "Teams" }],//es de aca ->  Driver.belongsToMany(Teams,{through: "Drivers_Teams",as: "Teams"});
-        //   attributes: [
-        //     'id',
-        //     ['name.forename', 'nombre'],
-        //     ['name.surname', 'apellido'],
-        //     'nationality',
-        //     ['image.url', 'imagen'],
-        //     'description',
-        //     'dob',
-        // ],
-        });
-         res.status(200).json(dbid)
+          dbid = await Driver.findOne({
+          where: {id}, // si incluye los datos del eqipo dentro de Drivers(osea mi base de datos)
+          include: { model: Teams, as: "Teams", attributes: ["name"]},//es de aca ->  Driver.belongsToMany(Teams,{through: "Drivers_Teams",as: "Teams"});
+        })
+
+        console.log("aqui",dbid)
+        // const list = dbid.Teams.map(team=> team.name);
+
+        // dbid = {...dbid.toJSON(), list}
+      
+        res.status(200).json(dbid)
         }
 
         // si no esta en mi bd lo busco en mi api
@@ -53,3 +49,21 @@ const getdriverdById = async (req,res) =>{
 }
 
 module.exports={getdriverdById}
+
+
+
+// if (UUID) {
+//   const dbid = await Driver.findOne({
+//   where: {id},
+//   // si incluye los datos del eqipo dentro de Drivers(osea mi base de datos)
+//    include: { model: Teams, attributes:["name"], as: "Teams"},//es de aca ->  Driver.belongsToMany(Teams,{through: "Drivers_Teams",as: "Teams"});
+
+// })
+// if (dbid) {
+//  const teams = Driver.teams.map(teams=> teams.name);
+
+//  res.status(200).json({driver: dbid, teams}) 
+// } else {
+//   // Handle the case where the driver is not found in the database
+//   res.status(404).json({ error: "Driver not found in the database" });
+// }
