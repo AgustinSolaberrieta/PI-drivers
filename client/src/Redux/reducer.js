@@ -1,8 +1,9 @@
-import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR, SET_ORDER_BY_ASC, SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC, CREATE_DRIVER} from "./action-types";
+import { CLEAN_DETAIL, GET_DRIVERS,GET_DRIVERS_DETAIL, SEARCHBAR, SET_ORDER_BY_ASC, SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC, CREATE_DRIVER, GET_TEAM} from "./action-types";
 
 const initialState={
     drivers: [],
     driversDetail : {},
+    teams:[]
     
     
 }
@@ -37,7 +38,13 @@ const reducer = (state = initialState , action) => {
             ...state,
             drivers: [...state.drivers, action.payload.data]
 
-          }    
+          }  
+          
+          case GET_TEAM :
+            return{
+              ...state,
+              teams: action.payload
+            }  
 
             case SET_ORDER_BY_ASC:
                 const sortedByNameAsc = [...state.drivers.data].sort((a, b)=>{

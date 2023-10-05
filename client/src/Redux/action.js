@@ -1,4 +1,4 @@
-import { GET_DRIVERS , GET_DRIVERS_DETAIL, CLEAN_DETAIL, SET_CURRENT_PAGE, SEARCHBAR, SET_ORDER_BY_ASC,SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC, CREATE_DRIVER} from "./action-types";
+import { GET_DRIVERS , GET_DRIVERS_DETAIL, CLEAN_DETAIL, SET_CURRENT_PAGE, SEARCHBAR, SET_ORDER_BY_ASC,SET_ORDER_BY_DESC, ORDERCARD_DOB_ASC, ORDERCARD_DOB_DESC, CREATE_DRIVER, GET_TEAM} from "./action-types";
 import axios from "axios";
 const endpoint = 'http://localhost:3001'
 
@@ -74,7 +74,6 @@ export const searchBar = (name) => {
       console.log("llega");
       const response = await axios.post(`${endpoint}/drivers`,{...driver})
 
-
       return dispatch({type: CREATE_DRIVER, payload:response})
 
     }catch (error){
@@ -83,6 +82,18 @@ export const searchBar = (name) => {
     }
   }
  }
+
+ export const getTeams =  () => {
+  return async (dispatch) => {
+      try {
+          const {data} = await axios(`${endpoint}/teams`);
+          return dispatch({type: GET_TEAM, payload: data})
+
+      } catch (error) {
+          console.log(error.message);
+      }
+  }
+}
 
 export const  setOrderByAsc = () => ({
     type: SET_ORDER_BY_ASC,
